@@ -36,13 +36,6 @@ struct Comment {
     4: required string create_date  // 评论发布日期，格式 mm-dd
 }
 
-// Message
-struct Message {
-    1: required i64 id              // 消息 id
-    2: required string content      // 消息内容
-    3: optional string create_time  // 消息创建时间
-}
-
 // User Information
 struct DouyinUserRequest {
     1: required i64 user_id         // 用户 id
