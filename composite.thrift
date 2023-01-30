@@ -7,10 +7,13 @@ struct BaseResp {
     2: optional string status_msg       // 状态描述
 }
 
-// User 
+// User
 struct User {
-    1: required i64 id                  // 用户 id
-    2: list<Vedio> favorite_vedio_list  // 用户点赞视频列表
+    1: required i64 id              // 用户 id
+    2: required string name         // 昵称
+    3: list<i64> follow_count    // 关注总数
+    4: optional i64 follower_count  // 粉丝总数
+    5: required bool is_follow      // true-已关注，false-未关注
 }
 
 // Vedio
@@ -50,6 +53,7 @@ struct BasicFavoriteActionResponse {
 // Favorite List
 struct BasicFavoriteListRequest {
     1: required i64 user_id             // 用户 id
+    2: required i64 query_id            // 查询用户 id
 }
 
 struct BasicFavoriteListResponse {
