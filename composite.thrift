@@ -38,7 +38,8 @@ struct Comment {
 
 // Feed
 struct BasicFeedRequest {
-    1: optional i64 lastest_time        // 限制返回视频最新投稿时间戳，精确到秒，不填表示当前时间
+    1: required i64 user_id             // 用户 id
+    2: optional i64 lastest_time        // 限制返回视频最新投稿时间戳，精确到秒，不填表示当前时间
 }
 
 struct BasicFeedResponse {
