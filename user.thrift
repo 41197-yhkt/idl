@@ -82,9 +82,9 @@ service UserService {
     // 用户登陆
     UserLoginResponse UserLogin(1: UserLoginRequest req)
     // 获取用户信息
-    UserInfoResponse UserInfo(1: UserInfoResponse req)
+    UserInfoResponse UserInfo(1: UserInfoRequest req)
     // 用户关注，用户点击关注的时候，维护用户的信息
     UserFollowResponse UserFollow(1: UserFollowRequest req)
     // 用户取消关注，用户点击取消关注的时候，维护用户的信息
-    UserFollowResponse UserUnfollow(1: UserFollowRequest req)
+    UserUnfollowResponse UserUnfollow(1: UserUnfollowRequest req)
 }
