@@ -105,7 +105,7 @@ struct DouyinPublishListResponse {
     2: list<Vedio> vedio_list       // 用户发布的视频列表
 }
 
-// Favarite Action
+// Favorite Action
 struct DouyinFavoriteActionRequest {
     1: required string token        // 用户鉴权 token
     2: required i64 vedio_id        // 视频 id
