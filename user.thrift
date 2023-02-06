@@ -76,6 +76,47 @@ struct UserUnfollowResponse {
     1: required BaseResp base_resp;
 }
 
+struct FollowListRequest {
+    1: required i64 user_id
+    2: required string token        // 用户鉴权 token
+}
+
+struct FollowListResponse {
+    1: required BaseResp base_resp
+    2: required list<User> user_list
+}
+
+struct FollowerListRequest {
+    1: required i64 user_id
+    2: required string token        // 用户鉴权 token
+}
+
+struct FollowerListResponse {
+    1: required BaseResp base_resp
+    2: required list<User> user_list
+}
+
+struct FriendListRequest {
+    1: required i64 user_id
+    2: required string token        // 用户鉴权 token
+}
+
+struct FriendListResponse {
+    1: required BaseResp base_resp
+    2: required list<User> user_list
+}
+
+struct IsFriendRequest{
+    1:required  i64 user_id
+    2:required  string token
+    3:required  i64  to_user_id
+}
+
+struct IsFriendResponse{
+    1:BaseResp base_resp
+    2:required  bool is_friend
+}
+
 service UserService {
     // 用户注册
     UserRegisterResponse UserRegister(1: UserRegisterRequest req)
@@ -87,4 +128,13 @@ service UserService {
     UserFollowResponse UserFollow(1: UserFollowRequest req)
     // 用户取消关注，用户点击取消关注的时候，维护用户的信息
     UserUnfollowResponse UserUnfollow(1: UserUnfollowRequest req)
+    //查询用户关注列表
+    FollowListResponse GetFollowList(1:FollowListRequest req)
+    //查询用户粉丝列表
+    FollowerListResponse GetFollowerList(1:FollowerListRequest req)
+    //查询用户好友列表
+    FriendListResponse GetFriendList(1:FriendListRequest req)
+    //判断是否是好友
+    IsFriendResponse IsFriend(1:IsFriendRequest req)
+
 }
