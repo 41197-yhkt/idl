@@ -117,6 +117,28 @@ struct IsFriendResponse{
     2:required  bool is_friend
 }
 
+// GetUser
+struct CompGetUserRequest {
+    1: required i64 user_id         // 用户 id
+    2: required i64 target_user_id  // 目标用户 id
+}
+
+struct CompGetUserResponse {
+    1: required BaseResp base_resp
+    2: required User user           // 用户信息
+}
+
+// MGetUser
+struct CompMGetUserRequest {
+    1: required i64 user_id         // 用户 id
+    2: list<i64> target_users_id    // 目标用户 id 列表
+}
+
+struct CompMGetUserResponse {
+    1: required BaseResp base_resp
+    2: list<User> user_list         // 用户信息列表
+}
+
 service UserService {
     // 用户注册
     UserRegisterResponse UserRegister(1: UserRegisterRequest req)
@@ -124,17 +146,20 @@ service UserService {
     UserLoginResponse UserLogin(1: UserLoginRequest req)
     // 获取用户信息
     UserInfoResponse UserInfo(1: UserInfoRequest req)
-    // 用户关注，用户点击关注的时候，维护用户的信息
+    // 用户关注，用户点击关注时，维护用户的信息
     UserFollowResponse UserFollow(1: UserFollowRequest req)
-    // 用户取消关注，用户点击取消关注的时候，维护用户的信息
+    // 用户取消关注，用户点击取消关注时，维护用户的信息
     UserUnfollowResponse UserUnfollow(1: UserUnfollowRequest req)
-    //查询用户关注列表
+    // 查询用户关注列表
     FollowListResponse GetFollowList(1:FollowListRequest req)
-    //查询用户粉丝列表
+    // 查询用户粉丝列表
     FollowerListResponse GetFollowerList(1:FollowerListRequest req)
-    //查询用户好友列表
+    // 查询用户好友列表
     FriendListResponse GetFriendList(1:FriendListRequest req)
-    //判断是否是好友
+    // 判断是否是好友
     IsFriendResponse IsFriend(1:IsFriendRequest req)
-
+    // 获取target_user和当前user的关系，并封装target_user返回
+    CompGetUserResponse CompGetUser(1:CompGetUserRequest req)
+    // 获取target_users和当前user的关系，并封装target_users返回
+    CompMGetUserResponse CompMGetUser(1:CompMGetUserRequest req)
 }
