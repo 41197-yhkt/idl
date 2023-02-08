@@ -1,4 +1,4 @@
-// idl/vedio.thrift
+// idl/video.thrift
 namespace go video
 
 // BaseResp
@@ -51,29 +51,29 @@ struct DouyinPublishListResponse {
     2: list<video> video_list       // 用户发布的视频列表
 }
 
-// GetVedio
-struct GetVedioRequest {
+// GetVideo
+struct GetVideoRequest {
     1: required i64 user_id          // 查询用户 id，用于判断 is_favorite
-    2: required i64 target_vedio_id  // 目标视频 id
+    2: required i64 target_video_id  // 目标视频 id
 }
 
-struct GetVedioResponse {
+struct GetVideoResponse {
     1: required video video           // 视频信息
 }
 
-// MGetVedio
-struct MGetVedioRequest {
+// MGetVideo
+struct MGetVideoRequest {
     1: required i64 user_id          // 查询用户 id，用于判断 is_favorite
-    2: list<i64> target_vedios_id    // 目标视频 id 列表
+    2: list<i64> target_videos_id    // 目标视频 id 列表
 }
 
-struct MGetVedioResponse {
-    1: list<video> vedio_list         // 视频信息列表
+struct MGetVideoResponse {
+    1: list<video> video_list         // 视频信息列表
 }
 
 service DouyinService {
     DouyinPublishActionResponse DouyinPublishActionMethod(1: DouyinPublishActionRequest req) (api.post="/douyin/publish/action");
     DouyinPublishListResponse DouyinPublishListMethod(1: DouyinPublishListRequest req) (api.get="/douyin/publish/list");
-    GetVedioResponse DouyinGetVedioMethod(1: GetVedioRequest req) (api.get="/douyin/publish/GetVedio");
-    MGetVedioResponse DouyinMGetVedioMethod(1: MGetVedioRequest req) (api.get="/douyin/publish/MGetVedio");
+    GetVideoResponse DouyinGetVideoMethod(1: GetVideoRequest req) (api.get="/douyin/publish/GetVideo");
+    MGetVideoResponse DouyinMGetVideoMethod(1: MGetVideoRequest req) (api.get="/douyin/publish/MGetVideo");
 }

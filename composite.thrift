@@ -16,8 +16,8 @@ struct User {
     5: required bool is_follow      // true-已关注，false-未关注
 }
 
-// Vedio
-struct Vedio {
+// Video
+struct Video {
     1: required i64 id                  // 视频 id
     2: required User author             // 作者
     3: required string play_url         // 播放地址
@@ -44,13 +44,13 @@ struct BasicFeedRequest {
 
 struct BasicFeedResponse {
     1: required BaseResp base_resp
-    3: list<Vedio> vedio_list           // 视频列表
+    3: list<Video> video_list           // 视频列表
     4: optional i64 next_time           // 发布最早时间，作为下次请求的lastest_time
 }
 
 // Favorite Action
 struct BasicFavoriteActionRequest {
-    1: required i64 vedio_id            // 视频 id
+    1: required i64 video_id            // 视频 id
     2: required i64 user_id             // 点赞用户
     3: required i32 action_type         // 1-点赞，2-取消
 }
@@ -67,13 +67,13 @@ struct BasicFavoriteListRequest {
 
 struct BasicFavoriteListResponse {
     1: required BaseResp base_resp
-    2: list<Vedio> vedio_list           // 用户点赞视频列表
+    2: list<Video> video_list           // 用户点赞视频列表
 }
 
 // Comment Action
 struct BasicCommentActionRequest {
     1: required i64 user_id         // 用户 id
-    2: required i64 vedio_id        // 视频 id
+    2: required i64 video_id        // 视频 id
     3: required i32 action_type     // 1-发表评论，2-删除评论
     4: optional string comment_text // action_type = 1 时，用户填写评论内容
     5: optional i64 comment_id      // action_type = 2 时，要删除的评论id
@@ -86,7 +86,7 @@ struct BasicCommentActionResponse {
 
 // Comment List
 struct BasicCommentListRequest {
-    1: required i64 vedio_id        // 视频 id
+    1: required i64 video_id        // 视频 id
 }
 
 struct BasicCommentListResponse {
