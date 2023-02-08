@@ -44,8 +44,8 @@ struct UserLoginResponse {
 
 // User Info Request
 struct UserInfoRequest {
-    1: required i64 user_id         // 用户 id
-    2: required string token        // 用户鉴权 token
+    1: required i64 user_id    (go.tag = 'query:"user_id"')     // 用户 id
+    2: required string token   (go.tag = 'query:"token"')     // 用户鉴权 token
 }
 
 // User Info Response
